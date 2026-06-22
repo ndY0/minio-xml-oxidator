@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package validator;
+
+message FileRequest {
+  string minio_config_name = 1;
+  string bucket = 2;
+  string object_key = 3;
+  string validator_id = 4;
+}
+
+message ValidateRequest {
+  repeated FileRequest files = 1;
+}
+
+message DiagnosticMessage {
+  string rule_name = 1;
+  string message = 2;
+  string element_path = 3;
+  uint32 element_index = 4;
+  Severity severity = 5;
+  string filename = 6;
+}
+
+enum Severity {
+  SEVERITY_UNSPECIFIED = 0;
+  SEVERITY_ERROR = 1;
+  SEVERITY_WARNING = 2;
+  SEVERITY_INFO = 3;
+}
+
+message FileComplete {
+  string filename = 1;
+  bool success = 2;
+  string error_message = 3;
+}
+
+message ValidateResponse {
+  oneof payload {
+    DiagnosticMessage diagnostic = 1;
+    FileComplete file_complete = 2;
+  }
+}
+
+service XmlValidatorService {
+  rpc ValidateBatch(ValidateRequest) returns (stream ValidateResponse);
+}

@@ -1,0 +1,15 @@
+[server]
+listen_addr = "0.0.0.0:50051"
+
+[pipeline]
+thread_count = 4
+buf_reader_capacity = 65536
+diagnostics_buffer_size = 256
+
+[[minio]]
+name = "main"
+endpoint = "http://minio:9000"
+access_key = "minioadmin"
+secret_key = "minioadmin"
+region = "us-east-1"
+secure = false
