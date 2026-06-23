@@ -2851,6 +2851,7 @@ checksum = "636f85e5ca6488e96401b61eb7de54f4e44755c988af0f52cf90230c312a1a89"
 [[package]]
 name = "xml-oxydizer"
 version = "0.2.0"
+source = "git+https://github.com/ndY0/xml-oxidator.git?branch=main#59c387aae13816afaffe3bc142b4046ae87330f8"
 dependencies = [
  "bumpalo",
  "crossbeam-channel",

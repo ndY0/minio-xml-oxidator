@@ -12,7 +12,7 @@ name = "minio-xml-validator"
 path = "src/main.rs"
 
 [dependencies]
-xml-oxydizer = { path = "../xml-validator", features = ["macros"] }
+xml-oxydizer = { git = "https://github.com/ndY0/xml-oxidator.git", branch = "main", features = ["macros"] }
 
 tonic = "0.13"
 prost = "0.13"
